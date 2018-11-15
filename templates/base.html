@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    {% block header %}{% endblock %}
+
+    <style>
+        ul{
+            list-style: none;
+			list-style-type: none;
+             margin: 0;
+             padding: 0;
+             overflow: hidden;
+             background-color: #333;
+        }
+
+        li.nav{
+            float: left;
+        }
+        ul a{
+            display: block;
+            text-decoration: none;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            background-color: #333;
+        }
+		li:hover a:hover {
+           background-color: #b2b2b2;
+           color: #000000;
+        }
+</style>
+
+</head>
+
+<body>
+<!--     <div style="padding:0;margin:0; width:100%;" >
+        <h1 style="font-size: 20px;">Contract Template Generator</h1>
+    </div> -->
+
+    <div>
+        <ul class="nav">
+            {% if session['logged_in'] %}
+                <li id="login" style="float:right"><a href="{{url_for('logout')}}">Log Out</a></li>
+            {% else %}
+                <li id="login" style="float:right"><a href="{{url_for('log_in')}}">Log In</a></li>
+            {%  endif %}
+            <li id="Setting" style="float:right"><a href="">Setting</a></li>
+		    <li id="contact" style="float:right"><a href="">Contact Us</a></li>
+            <li id="home" style="float:left"><a href="{{ url_for('home') }}">Home</a></li>
+        </ul>
+    </div>
+
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+    <footer>
+        {% block other_footers %}{% endblock %}
+    </footer>
+
+</html>

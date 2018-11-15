@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/sign_up.css") }}">
+{% endblock %}
+
+
+
+{% block content %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<div class="divAll">
+    <div id="titles">Sign Up</div>
+    <div id="contents">
+        <hr width="95%" color="#f2f2f2"/>
+        <form name="SignupForm" method="POST" action="{{url_for('register')}}" onSubmit="return checkForm()" enctype="multipart/form-data">
+
+            <div id="form-itemGroup">
+                <label for="account">User Name:</label>
+                <input type="text" id="account" name="username" class="input" onBlur="check_account()" oninput="check_account()" required>
+                <span class="default" id="accountErr">Enter your user name</span>
+            </div>
+
+             <div id="form-itemGroup">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="input">
+                <span class="default" id="nameERR" >Name used in your ID</span>
+            </div>
+
+
+            <div id="form-itemGroup">
+                <label for="password1">Password:</label>
+                <input type="password" id="password1" name="password1" class="input" onBlur="checkPassword()" oninput="checkPassword()" required>
+                <span class="default" id="passwordErr">6-16 for your password</span>
+            </div>
+
+
+            <div id="form-itemGroup">
+                <label for="password2">Confirm:</label>
+                <input type="password" id="password2" name="password2" class="input" onBlur="ConfirmPassword()" oninput="ConfirmPassword()" required>
+                <span class="default" id="conPasswordErr">Re-entry your password</span>
+            </div>
+
+
+            <div id="form-itemGroup">
+                <label for="gender">Gender:</label>
+                <input type="radio" id="gender" name="gender" value="0" onBlur="checkGender()" oninput="checkGender()"> Female
+                <input type="radio" id="gender" name="gender" value="1" onBlur="checkGender()" oninput="checkGender()"> Male
+                <input type="radio" id="gender" name="gender" value="2" onBlur="checkGender()" oninput="checkGender()" required> Other
+                <span class="default" id="genderErr">Choose your gender</span>
+            </div>
+
+
+            <div id="form-itemGroup">
+                <label for="birthdate">Birth:</label>
+                <input id="birthdate" name="birth" type="date"  onBlur="check_birthdate()" oninput="check_birthdate()" required>
+                <span class="default" id="birthErr">YYYY/MM/DD</span>
+            </div>
+
+
+            <div id="form-itemGroup">
+                <label for="phonenumber">Mobile No.:</label>
+                <input id="phonenumber" name="phonenumber" type="text" class="input" onBlur="checkPhone()" oninput="checkPhone()">
+                <span class="default" id="phoneErr">Input your Mobile Number</span>
+            </div>
+
+
+            <div id="form-itemGroup">
+                <label for="address">Address:</label>
+                <input id="address" name="address" type="text" class="input" >
+                <span class="default" id="addressERR">Input your address here</span>
+            </div>
+
+{#            <div id="form-itemGroup">#}
+{#                <label for="phtot">Choose Photo:</label>#}
+{#                <img id="preview" style="width=300px;height=300px">#}
+{#                <input type="file" name="file" onchange="imgPreview(this)" />#}
+{#            </div>#}
+            <div>
+                <a href="{{ url_for('home') }}" style="color: #0C0B0C">
+                    <input class="divBtn" type="button" value="Cancel" onclick="">
+                </a>
+                <input class="divBtn" type="submit" name="submit" value="Register" >
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}
