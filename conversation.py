@@ -406,7 +406,7 @@ def sequence(userid, state ,message):
 
             pdf_employment.generate_pdf_employment(info)
 
-            webbrowser.open_new_tab("http://127.0.0.1:8000/docs")
+            webbrowser.open_new_tab("http://ec2-18-223-100-211.us-east-2.compute.amazonaws.com/docs")
             
             return reply_message
 
@@ -459,7 +459,7 @@ def sequence(userid, state ,message):
         
         reply_message = "Now the pdf file is downloaded, please have a look\n"+"Do you want to modify something?(y/n)"
 
-        webbrowser.open_new_tab("http://127.0.0.1:8000/docs")
+        webbrowser.open_new_tab("http://ec2-18-223-100-211.us-east-2.compute.amazonaws.com/docs")
 
     return reply_message
 
