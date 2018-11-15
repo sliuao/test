@@ -12,6 +12,8 @@ import pdf_divorce
 import test
 import webbrowser
 
+from flask import send_file
+
 response_all = ["Hi, what can I help you?\n",
 			"Sorry, I can't understand what you want, please tell me what you want to do?\n",
 			"here is the contract you want, please have a look. Do you want to modify something? (Y/N)\n",

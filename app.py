@@ -2,7 +2,7 @@ import user
 import pdf_employment
 import pdf_divorce
 import conversation
-from flask import Flask, url_for, render_template, request, redirect, session, jsonify, make_response, send_from_directory
+from flask import Flask, url_for, render_template, request, redirect, session, jsonify, make_response, send_from_directory, send_file
 import os
 import webbrowser
 from flask_sqlalchemy import SQLAlchemy
@@ -175,13 +175,6 @@ def get_pdf():
     #print(directory)
     return send_from_directory(directory,file_name, as_attachment=True)
 
-@app.route('/pdf', methods=['GET'])
-def pdf_page():
-    binary_pdf = open("Test-employment.pdf")
-    response = make_response(binary_pdf)
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % 'Test-employment.pdf'
-    return response
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config["DEBUG"] = True
